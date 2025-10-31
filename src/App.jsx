@@ -15,7 +15,7 @@ const apps = [
     name: 'FM Team Draw',
     description: 'Randomize balanced squads for Football Manager save nights with friends.',
     href: 'https://fm.amerkovacevic.com',
-    status: 'In development',
+    status: 'Live',
   },
   {
     name: 'Pickup Soccer',
