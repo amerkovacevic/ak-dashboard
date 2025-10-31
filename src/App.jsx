@@ -16,28 +16,28 @@ const apps = [
     name: 'FM Team Draw',
     description: 'Randomize balanced squads for Football Manager save nights with friends.',
     href: '#',
-    status: 'In design',
+    status: 'In development',
     disabled: true,
   },
   {
     name: 'Pickup Soccer',
     description: 'Track attendance, manage rosters, and spin up small-sided games on demand.',
     href: '#',
-    status: 'Planning',
+    status: 'In development',
     disabled: true,
   },
   {
     name: 'Amer Gauntlet',
     description: 'Personal challenge hub for fitness streaks and habit-building experiments.',
     href: '#',
-    status: 'Concept',
+    status: 'In development',
     disabled: true,
   },
   {
     name: 'Future App Slot',
     description: 'Reserved for the next idea—finance tracker, AI assistant, or something new.',
     href: '#',
-    status: 'Coming soon',
+    status: 'In development',
     disabled: true,
   },
 ]
@@ -58,11 +58,10 @@ const App = () => {
         <header className="flex flex-col gap-6 text-center md:text-left">
           <p className="text-sm font-semibold uppercase tracking-[0.4em] text-brand-muted">AK Dashboard</p>
           <h1 className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-            Your personal mission control for everyday experiments and tools
+            Personal mission control for everyday experiments and tools
           </h1>
           <p className="mx-auto max-w-3xl text-lg text-slate-300 md:mx-0">
-            Launch into tailored experiences—from logistics helpers to creativity boosters. Save this
-            hub and return whenever inspiration strikes; new apps will appear here as they come to life.
+            Save this hub and return whenever inspiration strikes, new apps will appear here as they come to life.
           </p>
         </header>
 
@@ -128,7 +127,17 @@ const App = () => {
         </section>
 
         <footer className="border-t border-white/10 pt-6 text-center text-sm text-slate-400 md:text-left">
-          Crafted for Amer Kovacevic • Ready for Firebase hosting at <span className="font-semibold text-slate-200">Amerkovacevic.com</span>
+                <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+                  <p>&copy; {new Date().getFullYear()} Amer Kovacevic All rights reserved.</p>
+                  <div className="flex flex-wrap gap-4">
+                    <a className="transition hover:text-sky-400" href="https://www.linkedin.com/in/amerkovacevic" target="_blank" rel="noreferrer">
+                      LinkedIn
+                    </a>
+                    <a className="transition hover:text-sky-400" href="https://www.github.com/amerkovacevic" target="_blank" rel="noreferrer">
+                      GitHub
+                    </a>
+                  </div>
+                </div>
         </footer>
       </div>
     </div>
