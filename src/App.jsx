@@ -14,15 +14,14 @@ const apps = [
   {
     name: 'FM Team Draw',
     description: 'Randomize balanced squads for Football Manager save nights with friends.',
-    href: '#',
+    href: 'https://fm.amerkovacevic.com',
     status: 'In development',
-    disabled: true,
   },
   {
     name: 'Pickup Soccer',
     description: 'Track attendance, manage rosters, and spin up small-sided games on demand.',
     href: 'https://soccer.amerkovacevic.com',
-    status: 'In development',
+    status: 'Live',
   },
   {
     name: 'Amer Gauntlet',
