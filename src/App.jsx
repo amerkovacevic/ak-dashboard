@@ -1,31 +1,31 @@
 const apps = [
   {
     name: 'Personal Portfolio',
-    description: 'A snapshot of my work, values, and journey. Hosted at about.amerkovacevic.com.',
+    description: 'A curated snapshot of my projects, values, and story. A glimpse into my work and creative journey.',
     href: 'https://about.amerkovacevic.com',
     status: 'Live',
   },
   {
     name: 'Secret Santa',
-    description: 'Effortless gift exchange coordinator with smart matching and reminders.',
+    description: 'Smart gift exchange made simple with automatic matching and reminders. Perfect for effortless holiday coordination.',
     href: 'https://santa.amerkovacevic.com',
     status: 'In development',
   },
   {
     name: 'FM Team Draw',
-    description: 'Randomize balanced squads for Football Manager save nights with friends.',
+    description: 'Randomize balanced Football Manager teams for your group saves. Quick, fair, and ready for your next session.',
     href: 'https://fm.amerkovacevic.com',
     status: 'Live',
   },
   {
     name: 'Pickup Soccer',
-    description: 'Track attendance, manage rosters, and spin up small-sided games on demand.',
+    description: 'Easily organize games, track attendance, and manage teams. Built for casual players who love consistency.',
     href: 'https://soccer.amerkovacevic.com',
     status: 'Live',
   },
   {
     name: 'Amer Gauntlet',
-    description: 'Personal challenge hub for fitness streaks and habit-building experiments.',
+    description: 'A daily challenge hub of fast, skill-based mini games. Compete, track streaks, and test your focus and reflexes.',
     href: 'https://gauntlet.amerkovacevic.com',
     status: 'Live',
   },
