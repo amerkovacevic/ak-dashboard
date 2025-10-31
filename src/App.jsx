@@ -27,9 +27,8 @@ const apps = [
   {
     name: 'Amer Gauntlet',
     description: 'Personal challenge hub for fitness streaks and habit-building experiments.',
-    href: '#',
+    href: 'https://gauntlet.amerkovacevic.com',
     status: 'In development',
-    disabled: true,
   },
   {
     name: 'Future App Slot',
