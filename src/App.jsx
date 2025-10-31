@@ -8,9 +8,8 @@ const apps = [
   {
     name: 'Secret Santa',
     description: 'Effortless gift exchange coordinator with smart matching and reminders.',
-    href: '#',
+    href: 'https://santa.amerkovacevic.com',
     status: 'In development',
-    disabled: true,
   },
   {
     name: 'FM Team Draw',
@@ -22,9 +21,8 @@ const apps = [
   {
     name: 'Pickup Soccer',
     description: 'Track attendance, manage rosters, and spin up small-sided games on demand.',
-    href: '#',
+    href: 'https://soccer.amerkovacevic.com',
     status: 'In development',
-    disabled: true,
   },
   {
     name: 'Amer Gauntlet',
