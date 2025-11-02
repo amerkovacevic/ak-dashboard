@@ -32,7 +32,7 @@ const apps = [
   {
     name: 'Color Crafter',
     description: 'Sleek palette studio that lets you generate, refine, and save color schemes instantly.',
-    href: 'https://color.amerkovacevic.com',
+    href: 'https://color.amerkovacevic.com/?colors=0D1B2A-1B263B-415A77-778DA9-E0E1DD&info=hsl',
     status: 'Live',
   },
 ]
