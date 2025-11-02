@@ -9,7 +9,7 @@ const apps = [
     name: 'Secret Santa',
     description: 'Smart gift exchange made simple with automatic matching and reminders. Perfect for effortless holiday coordination.',
     href: 'https://santa.amerkovacevic.com',
-    status: 'In development',
+    status: 'Live',
   },
   {
     name: 'FM Team Draw',
@@ -33,7 +33,7 @@ const apps = [
     name: 'Color Crafter',
     description: 'Sleek palette studio that lets you generate, refine, and save color schemes instantly.',
     href: 'https://color.amerkovacevic.com',
-    status: 'In development',
+    status: 'Live',
   },
 ]
 
