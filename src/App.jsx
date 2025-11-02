@@ -52,6 +52,7 @@ const statusStyles = {
   'Coming soon': 'text-quaternary-300 bg-secondary-700/60 border-tertiary-800/60',
 }
 
+
 const App = () => {
   return (
     <div className="min-h-screen bg-primary-800">
