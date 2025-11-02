@@ -8,9 +8,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
+    fontFamily: tailwindFonts,
     extend: {
       colors: tailwindColors,
-      fontFamily: tailwindFonts,
     },
   },
   plugins: [],
