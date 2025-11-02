@@ -120,21 +120,10 @@ const App = () => {
             )
           })}
         </section>
-
-        <footer className="border-t border-tertiary-500/30 pt-6 text-center text-sm text-quaternary-400 md:text-left">
-                <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm text-quaternary-500 sm:flex-row sm:items-center sm:justify-between">
-                  <p>&copy; {new Date().getFullYear()} Amer Kovacevic All rights reserved.</p>
-                  <div className="flex flex-wrap gap-4">
-                    <a className="transition hover:text-tertiary-400 active:text-tertiary-400" href="https://www.linkedin.com/in/amerkovacevic" target="_blank" rel="noreferrer">
-                      LinkedIn
-                    </a>
-                    <a className="transition hover:text-tertiary-400 active:text-tertiary-400" href="https://www.github.com/amerkovacevic" target="_blank" rel="noreferrer">
-                      GitHub
-                    </a>
-                  </div>
-                </div>
-        </footer>
       </div>
+      <footer className="border-t border-tertiary-500/30 bg-primary-800/80 py-4 text-center text-xs text-quaternary-500">
+        <p>&copy; {new Date().getFullYear()} Amer Kovacevic All rights reserved.</p>
+      </footer>
     </div>
   )
 }
