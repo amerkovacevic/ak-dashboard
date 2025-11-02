@@ -35,6 +35,12 @@ const apps = [
     href: 'https://color.amerkovacevic.com/?colors=0D1B2A-1B263B-415A77-778DA9-E0E1DD&info=hsl',
     status: 'Live',
   },
+  {
+    name: 'Time Bro',
+    description: 'Add cities, visualize overlapping hours, and find the perfect meeting time at a glance.',
+    href: 'https://time.amerkovacevic.com',
+    status: 'In development',
+  },
 ]
 
 const statusStyles = {
