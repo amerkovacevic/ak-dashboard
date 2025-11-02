@@ -38,24 +38,24 @@ const apps = [
 ]
 
 const statusStyles = {
-  Live: 'text-emerald-400 bg-emerald-950/50 border-emerald-800/60',
-  'In development': 'text-sky-300 bg-sky-950/40 border-sky-800/60',
-  'In design': 'text-indigo-300 bg-indigo-950/40 border-indigo-800/60',
-  Planning: 'text-amber-300 bg-amber-950/40 border-amber-800/60',
-  Concept: 'text-fuchsia-300 bg-fuchsia-950/40 border-fuchsia-800/60',
-  'Coming soon': 'text-slate-300 bg-slate-900/60 border-slate-800/60',
+  Live: 'text-success-300 bg-success-950/50 border-success-800/60',
+  'In development': 'text-tertiary-300 bg-tertiary-950/40 border-tertiary-800/60',
+  'In design': 'text-quaternary-300 bg-quaternary-950/40 border-quaternary-800/60',
+  Planning: 'text-warning-300 bg-warning-950/40 border-warning-800/60',
+  Concept: 'text-quaternary-300 bg-quaternary-950/40 border-quaternary-800/60',
+  'Coming soon': 'text-quaternary-300 bg-secondary-700/60 border-tertiary-800/60',
 }
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+    <div className="min-h-screen bg-gradient-to-b from-primary-800 via-secondary-700 to-primary-800">
       <div className="mx-auto flex min-h-screen max-w-6xl flex-col gap-16 px-6 py-16 md:px-12 lg:px-16">
         <header className="flex flex-col gap-6 text-center md:text-left">
-          <p className="text-sm font-semibold uppercase tracking-[0.4em] text-brand-muted">AK Dashboard</p>
-          <h1 className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.4em] text-quaternary-400">AK Dashboard</p>
+          <h1 className="text-4xl font-bold text-accent-50 sm:text-5xl lg:text-6xl">
             Experiments and everyday tools
           </h1>
-          <p className="mx-auto max-w-3xl text-lg text-slate-300 md:mx-0">
+          <p className="mx-auto max-w-3xl text-lg text-quaternary-300 md:mx-0">
           A growing space for personal projects, ideas, and utilities that continue to evolve with time.
           </p>
         </header>
@@ -64,26 +64,26 @@ const App = () => {
           {apps.map((app) => {
             const isDisabled = Boolean(app.disabled)
             const isExternal = app.href.startsWith('http')
-            const statusClass = statusStyles[app.status] ?? 'text-slate-300 bg-slate-900/60 border-slate-800/60'
+            const statusClass = statusStyles[app.status] ?? 'text-quaternary-300 bg-secondary-700/60 border-tertiary-800/60'
 
             const cardContent = (
-              <div className="flex h-full flex-col justify-between gap-6 rounded-2xl border border-white/5 bg-white/5 p-6 backdrop-blur transition hover:border-brand-accent/60 hover:bg-white/10">
+              <div className="flex h-full flex-col justify-between gap-6 rounded-2xl border border-tertiary-500/30 bg-secondary-700/5 p-6 backdrop-blur transition hover:border-tertiary-400/60 hover:bg-secondary-700/10 active:border-tertiary-400/60 active:bg-secondary-700/10">
                 <div className="flex flex-col gap-4">
                   <div className={`inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide ${statusClass}`}>
                     <span className="inline-block h-2 w-2 rounded-full bg-current" aria-hidden />
                     {app.status}
                   </div>
                   <div className="space-y-2">
-                    <h2 className="text-2xl font-semibold text-white">{app.name}</h2>
-                    <p className="text-sm text-slate-300">{app.description}</p>
+                    <h2 className="text-2xl font-semibold text-accent-50">{app.name}</h2>
+                    <p className="text-sm text-quaternary-300">{app.description}</p>
                   </div>
                 </div>
                 <div>
                   <span
-                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition ${
+                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition touch-manipulation ${
                       isDisabled
-                        ? 'cursor-not-allowed bg-slate-800/80 text-slate-400'
-                        : 'bg-brand-accent/20 text-brand-accent hover:bg-brand-accent/30'
+                        ? 'cursor-not-allowed bg-secondary-600/80 text-quaternary-400'
+                        : 'bg-tertiary-500/20 text-tertiary-300 hover:bg-tertiary-500/30 active:bg-tertiary-500/30'
                     }`}
                   >
                     {isDisabled ? 'Coming Soon' : 'Open App'}
@@ -121,14 +121,14 @@ const App = () => {
           })}
         </section>
 
-        <footer className="border-t border-white/10 pt-6 text-center text-sm text-slate-400 md:text-left">
-                <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+        <footer className="border-t border-tertiary-500/30 pt-6 text-center text-sm text-quaternary-400 md:text-left">
+                <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 text-sm text-quaternary-500 sm:flex-row sm:items-center sm:justify-between">
                   <p>&copy; {new Date().getFullYear()} Amer Kovacevic All rights reserved.</p>
                   <div className="flex flex-wrap gap-4">
-                    <a className="transition hover:text-sky-400" href="https://www.linkedin.com/in/amerkovacevic" target="_blank" rel="noreferrer">
+                    <a className="transition hover:text-tertiary-400 active:text-tertiary-400" href="https://www.linkedin.com/in/amerkovacevic" target="_blank" rel="noreferrer">
                       LinkedIn
                     </a>
-                    <a className="transition hover:text-sky-400" href="https://www.github.com/amerkovacevic" target="_blank" rel="noreferrer">
+                    <a className="transition hover:text-tertiary-400 active:text-tertiary-400" href="https://www.github.com/amerkovacevic" target="_blank" rel="noreferrer">
                       GitHub
                     </a>
                   </div>
