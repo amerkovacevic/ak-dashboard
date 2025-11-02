@@ -48,7 +48,7 @@ const statusStyles = {
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-primary-800 via-secondary-700 to-primary-800">
+    <div className="min-h-screen bg-primary-800">
       <div className="mx-auto flex min-h-screen max-w-6xl flex-col gap-16 px-6 py-16 md:px-12 lg:px-16">
         <header className="flex flex-col gap-6 text-center md:text-left">
           <p className="text-sm font-semibold uppercase tracking-[0.4em] text-quaternary-400">AK Dashboard</p>
@@ -67,7 +67,7 @@ const App = () => {
             const statusClass = statusStyles[app.status] ?? 'text-quaternary-300 bg-secondary-700/60 border-tertiary-800/60'
 
             const cardContent = (
-              <div className="flex h-full flex-col justify-between gap-6 rounded-2xl border border-tertiary-500/30 bg-secondary-700/5 p-6 backdrop-blur transition hover:border-tertiary-400/60 hover:bg-secondary-700/10 active:border-tertiary-400/60 active:bg-secondary-700/10">
+              <div className="flex h-full flex-col justify-between gap-6 rounded-2xl border border-tertiary-500/30 bg-secondary-700/70 p-6 transition hover:border-tertiary-400/60 hover:bg-secondary-700/80 active:border-tertiary-400/60 active:bg-secondary-700/80">
                 <div className="flex flex-col gap-4">
                   <div className={`inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide ${statusClass}`}>
                     <span className="inline-block h-2 w-2 rounded-full bg-current" aria-hidden />
