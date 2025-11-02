@@ -53,10 +53,10 @@ const App = () => {
         <header className="flex flex-col gap-6 text-center md:text-left">
           <p className="text-sm font-semibold uppercase tracking-[0.4em] text-brand-muted">AK Dashboard</p>
           <h1 className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-            Personal mission control for everyday experiments and tools
+            Experiments and everyday tools
           </h1>
           <p className="mx-auto max-w-3xl text-lg text-slate-300 md:mx-0">
-            Save this hub and return whenever inspiration strikes, new apps will appear here as they come to life.
+          A growing space for personal projects, ideas, and utilities that continue to evolve with time.
           </p>
         </header>
 
