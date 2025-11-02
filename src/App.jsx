@@ -30,11 +30,10 @@ const apps = [
     status: 'Live',
   },
   {
-    name: 'Future App Slot',
-    description: 'Reserved for the next idea—finance tracker, AI assistant, or something new.',
-    href: '#',
+    name: 'Color Crafter',
+    description: 'Sleek palette studio that lets you generate, refine, and save color schemes instantly.',
+    href: 'https://color.amerkovacevic.com',
     status: 'In development',
-    disabled: true,
   },
 ]
 
