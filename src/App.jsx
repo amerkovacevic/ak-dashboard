@@ -41,6 +41,12 @@ const apps = [
     href: 'https://time.amerkovacevic.com',
     status: 'In development',
   },
+  {
+    name: 'Flick Feed',
+    description: 'A modern social platform that lets users log, rate, and share movies and shows they’ve watched, built for clean visuals and effortless discovery.',
+    href: 'https://flick.amerkovacevic.com',
+    status: 'In development',
+  },
 ]
 
 const statusStyles = {
