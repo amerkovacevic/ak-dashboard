@@ -36,16 +36,22 @@ const apps = [
     status: 'Live',
   },
   {
+    name: 'Encryption Suite',
+    description: 'Securely encrypt and decrypt text using customizable algorithms, transforming plain messages into coded formats and back again.',
+    href: 'https://crypt.amerkovacevic.com',
+    status: 'Live',
+  },
+  {
     name: 'Time Bro',
     description: 'Add cities, visualize overlapping hours, and find the perfect meeting time at a glance.',
     href: 'https://time.amerkovacevic.com',
-    status: 'In development',
+    status: 'Live',
   },
   {
     name: 'Flick Feed',
     description: 'A modern social platform that lets users log, rate, and share movies and shows they’ve watched, built for clean visuals and effortless discovery.',
     href: 'https://flick.amerkovacevic.com',
-    status: 'In development',
+    status: 'Live',
   },
 ]
 
