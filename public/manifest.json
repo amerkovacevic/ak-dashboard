@@ -1,0 +1,27 @@
+{
+  "name": "AK Dashboard - Amer Kovacevic Portfolio",
+  "short_name": "AK Dashboard",
+  "description": "A growing space for personal projects, ideas, and utilities",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D1B2A",
+  "theme_color": "#415A77",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/aklogo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/aklogo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "utilities", "portfolio"],
+  "screenshots": []
+}
+

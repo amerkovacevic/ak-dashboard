@@ -1,0 +1,52 @@
+name: Update Last Commit Dates
+
+on:
+  # Run every 6 hours
+  schedule:
+    - cron: '0 */6 * * *'
+  
+  # Allow manual trigger
+  workflow_dispatch:
+  
+  # Run on push to main (for testing)
+  push:
+    branches:
+      - main
+
+jobs:
+  update-commits:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Fetch latest commits
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: node scripts/fetch-commits.js
+      
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --exit-code src/data/lastUpdated.json || echo "changed=true" >> $GITHUB_OUTPUT
+      
+      - name: Commit and push if changed
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add src/data/lastUpdated.json
+          git commit -m "chore: update last commit dates [skip ci]"
+          git push
+
