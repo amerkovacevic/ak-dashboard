@@ -97,7 +97,7 @@ const appsData = [
     name: 'Fullporter',
     description: 'A paper trading app to practice stock market strategies without risking real money. Track your portfolio and test your skills.',
     href: 'https://trade.amerkovacevic.com',
-    status: 'Planning',
+    status: 'In Development',
     color: '#eab308', // yellow
     githubRepo: 'amerkovacevic/fullporter',
   },
