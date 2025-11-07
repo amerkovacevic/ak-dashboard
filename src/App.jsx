@@ -8,7 +8,6 @@ const appsData = [
     description: 'A curated snapshot of my projects, values, and story. A glimpse into my work and creative journey.',
     href: 'https://about.amerkovacevic.com',
     status: 'Live',
-    category: 'Portfolio',
     color: '#14b8a6', // teal
     githubRepo: 'amerkovacevic/personal-portfolio',
   },
@@ -18,7 +17,6 @@ const appsData = [
     description: 'Smart gift exchange made simple with automatic matching and reminders. Perfect for effortless holiday coordination.',
     href: 'https://santa.amerkovacevic.com',
     status: 'Live',
-    category: 'Social',
     color: '#ef4444', // red
     githubRepo: 'amerkovacevic/secret-santa',
   },
@@ -28,7 +26,6 @@ const appsData = [
     description: 'Randomize balanced Football Manager teams for your group saves. Quick, fair, and ready for your next session.',
     href: 'https://fm.amerkovacevic.com',
     status: 'Live',
-    category: 'Gaming',
     color: '#8b5cf6', // purple
     githubRepo: 'amerkovacevic/fm-team-draw',
   },
@@ -38,7 +35,6 @@ const appsData = [
     description: 'Easily organize games, track attendance, and manage teams. Built for casual players who love consistency.',
     href: 'https://soccer.amerkovacevic.com',
     status: 'Live',
-    category: 'Sports',
     color: '#22c55e', // green
     githubRepo: 'amerkovacevic/pickup-soccer',
   },
@@ -48,7 +44,6 @@ const appsData = [
     description: 'A daily challenge hub of fast, skill-based mini games. Compete, track streaks, and test your focus and reflexes.',
     href: 'https://gauntlet.amerkovacevic.com',
     status: 'Live',
-    category: 'Gaming',
     color: '#f59e0b', // amber
     githubRepo: 'amerkovacevic/amer-gauntlet',
   },
@@ -58,7 +53,6 @@ const appsData = [
     description: 'Sleek palette studio that lets you generate, refine, and save color schemes instantly.',
     href: 'https://color.amerkovacevic.com/?colors=0D1B2A-1B263B-415A77-778DA9-E0E1DD&info=hsl',
     status: 'Live',
-    category: 'Design Tool',
     color: '#ec4899', // pink
     githubRepo: 'amerkovacevic/color-crafter',
   },
@@ -68,7 +62,6 @@ const appsData = [
     description: 'A comprehensive encryption toolkit with 9 cipher methods, real-time processing, and educational cryptanalysis tools.',
     href: 'https://crypt.amerkovacevic.com',
     status: 'Live',
-    category: 'Security Tool',
     color: '#3b82f6', // blue
     githubRepo: 'amerkovacevic/encryption',
   },
@@ -78,7 +71,6 @@ const appsData = [
     description: 'Add cities, visualize overlapping hours, and find the perfect meeting time at a glance.',
     href: 'https://time.amerkovacevic.com',
     status: 'Live',
-    category: 'Productivity',
     color: '#06b6d4', // cyan
     githubRepo: 'amerkovacevic/time-buddy',
   },
@@ -88,7 +80,6 @@ const appsData = [
     description: 'A modern social platform that lets users log, rate, and share movies and shows they have watched, built for clean visuals and effortless discovery.',
     href: 'https://flick.amerkovacevic.com',
     status: 'Live',
-    category: 'Social',
     color: '#a855f7', // purple
     githubRepo: 'amerkovacevic/flickfeed',
   },
@@ -98,7 +89,6 @@ const appsData = [
     description: 'A diff checker for pasted text. Compare two text blocks side-by-side and see exactly what changed.',
     href: '#',
     status: 'Planning',
-    category: 'Developer Tool',
     color: '#10b981', // emerald
     githubRepo: 'amerkovacevic/diff-bro',
     disabled: true,
@@ -109,7 +99,6 @@ const appsData = [
     description: 'A paper trading app to practice stock market strategies without risking real money. Track your portfolio and test your skills.',
     href: '#',
     status: 'Planning',
-    category: 'Finance',
     color: '#eab308', // yellow
     githubRepo: 'amerkovacevic/fullporter',
     disabled: true,
@@ -133,22 +122,17 @@ const appsWithCommitData = appsData.map(app => {
 const statusStyles = {
   Live: 'text-success-300 bg-success-950/50 border-success-800/60',
   'In development': 'text-tertiary-300 bg-tertiary-950/40 border-tertiary-800/60',
-  'In design': 'text-quaternary-300 bg-quaternary-950/40 border-quaternary-800/60',
   Planning: 'text-warning-300 bg-warning-950/40 border-warning-800/60',
   Concept: 'text-quaternary-300 bg-quaternary-950/40 border-quaternary-800/60',
   'Coming soon': 'text-quaternary-300 bg-secondary-700/60 border-tertiary-800/60',
 }
 
-const categories = ['All', 'Portfolio', 'Social', 'Gaming', 'Sports', 'Design Tool', 'Security Tool', 'Productivity', 'Developer Tool', 'Finance']
-const statuses = ['All', 'Live', 'In development', 'In design', 'Planning']
+const statuses = ['All', 'Live', 'In development', 'Planning']
 
 const App = () => {
   const [apps, setApps] = useState(appsWithCommitData)
-  const [searchQuery, setSearchQuery] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('All')
   const [selectedStatus, setSelectedStatus] = useState('All')
   const [viewMode, setViewMode] = useState('grid') // grid, list, compact
-  const [showStats, setShowStats] = useState(true)
   const [touchStart, setTouchStart] = useState(null)
   const [touchEnd, setTouchEnd] = useState(null)
   const cardsRef = useRef([])
@@ -157,9 +141,6 @@ const App = () => {
   useEffect(() => {
     const savedViewMode = localStorage.getItem('dashboardViewMode')
     if (savedViewMode) setViewMode(savedViewMode)
-    
-    const savedShowStats = localStorage.getItem('dashboardShowStats')
-    if (savedShowStats !== null) setShowStats(JSON.parse(savedShowStats))
   }, [])
 
   // Save view mode preference
@@ -167,19 +148,10 @@ const App = () => {
     localStorage.setItem('dashboardViewMode', viewMode)
   }, [viewMode])
 
-  // Save stats preference
-  useEffect(() => {
-    localStorage.setItem('dashboardShowStats', JSON.stringify(showStats))
-  }, [showStats])
-
   // Filter apps
   const filteredApps = apps.filter(app => {
-    const matchesSearch = app.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         app.description.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesCategory = selectedCategory === 'All' || app.category === selectedCategory
     const matchesStatus = selectedStatus === 'All' || app.status === selectedStatus
-    
-    return matchesSearch && matchesCategory && matchesStatus
+    return matchesStatus
   })
 
   // Get featured apps - hardcoded specific apps
@@ -274,7 +246,6 @@ const App = () => {
               
               <div className="space-y-2">
                 <h2 className="text-2xl font-semibold text-accent-50">{app.name}</h2>
-                <p className="text-xs text-tertiary-400 uppercase tracking-wide">{app.category}</p>
                 <p className="text-sm text-quaternary-300">{app.description}</p>
               </div>
             </div>
@@ -317,7 +288,6 @@ const App = () => {
                   </span>
                 )}
               </div>
-              <p className="text-xs text-tertiary-400 uppercase tracking-wide">{app.category}</p>
               <p className="text-sm text-quaternary-300">{app.description}</p>
             </div>
             <div className="flex flex-col items-end gap-3">
@@ -348,18 +318,17 @@ const App = () => {
 
         {viewMode === 'compact' && (
           <>
-            <div className="flex-1 flex items-center gap-4">
-              <h3 className="text-lg font-semibold text-accent-50 flex items-center gap-2">
-                {app.name}
+            <div className="flex-1 min-w-0">
+              <h3 className="text-lg font-semibold text-accent-50 flex items-center gap-2 truncate">
+                <span className="truncate">{app.name}</span>
                 {isNew && (
-                  <span className="inline-flex items-center rounded-full bg-tertiary-500/20 px-2 py-0.5 text-xs font-semibold text-tertiary-300">
+                  <span className="inline-flex items-center rounded-full bg-tertiary-500/20 px-2 py-0.5 text-xs font-semibold text-tertiary-300 flex-shrink-0">
                     NEW
                   </span>
                 )}
               </h3>
-              <span className="text-xs text-tertiary-400 uppercase tracking-wide">{app.category}</span>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 flex-shrink-0">
               <div className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-xs font-semibold uppercase tracking-wide ${statusClass}`}>
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-current" aria-hidden />
                 {app.status}
@@ -438,95 +407,35 @@ const App = () => {
         </header>
 
         {/* Statistics Dashboard */}
-        {showStats && (
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4" style={{ animation: 'fadeInUp 0.6s ease-out 0.2s both' }}>
-            <div className="bg-secondary-700/70 border border-tertiary-500/30 rounded-xl p-4 text-center">
-              <div className="text-3xl font-bold text-accent-50">{stats.total}</div>
-              <div className="text-xs text-quaternary-400 uppercase tracking-wide mt-1">Total Apps</div>
-            </div>
-            <div className="bg-secondary-700/70 border border-success-800/30 rounded-xl p-4 text-center">
-              <div className="text-3xl font-bold text-success-300">{stats.live}</div>
-              <div className="text-xs text-quaternary-400 uppercase tracking-wide mt-1">Live</div>
-            </div>
-            <div className="bg-secondary-700/70 border border-tertiary-500/30 rounded-xl p-4 text-center">
-              <div className="text-3xl font-bold text-tertiary-300">{stats.inDev}</div>
-              <div className="text-xs text-quaternary-400 uppercase tracking-wide mt-1">In Development</div>
-            </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4" style={{ animation: 'fadeInUp 0.6s ease-out 0.2s both' }}>
+          <div className="bg-secondary-700/70 border border-tertiary-500/30 rounded-xl p-4 text-center">
+            <div className="text-3xl font-bold text-accent-50">{stats.total}</div>
+            <div className="text-xs text-quaternary-400 uppercase tracking-wide mt-1">Total Apps</div>
           </div>
-        )}
-
-
-        {/* Search and Filters */}
-        <div className="flex flex-col gap-4" style={{ animation: 'fadeInUp 0.6s ease-out 0.3s both' }}>
-          <div className="flex flex-col sm:flex-row gap-3">
-            {/* Search */}
-            <div className="flex-1">
-              <input
-                type="text"
-                placeholder="Search apps, tags, or descriptions..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-3 bg-secondary-700/70 border border-tertiary-500/30 rounded-xl text-accent-50 placeholder:text-quaternary-500 focus:border-tertiary-400/60 focus:outline-none transition"
-              />
-            </div>
-            
-            {/* View Mode Toggle */}
-            <div className="flex gap-2 bg-secondary-700/70 border border-tertiary-500/30 rounded-xl p-1.5">
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`px-3 py-2 rounded-lg transition ${viewMode === 'grid' ? 'bg-tertiary-600 text-accent-50' : 'text-quaternary-400 hover:text-accent-50'}`}
-                title="Grid view"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
-                </svg>
-              </button>
-              <button
-                onClick={() => setViewMode('list')}
-                className={`px-3 py-2 rounded-lg transition ${viewMode === 'list' ? 'bg-tertiary-600 text-accent-50' : 'text-quaternary-400 hover:text-accent-50'}`}
-                title="List view"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-              <button
-                onClick={() => setViewMode('compact')}
-                className={`px-3 py-2 rounded-lg transition ${viewMode === 'compact' ? 'bg-tertiary-600 text-accent-50' : 'text-quaternary-400 hover:text-accent-50'}`}
-                title="Compact view"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8h16M4 16h16" />
-                </svg>
-              </button>
-            </div>
+          <div className="bg-secondary-700/70 border border-success-800/30 rounded-xl p-4 text-center">
+            <div className="text-3xl font-bold text-success-300">{stats.live}</div>
+            <div className="text-xs text-quaternary-400 uppercase tracking-wide mt-1">Live</div>
           </div>
+          <div className="bg-secondary-700/70 border border-tertiary-500/30 rounded-xl p-4 text-center">
+            <div className="text-3xl font-bold text-tertiary-300">{stats.inDev}</div>
+            <div className="text-xs text-quaternary-400 uppercase tracking-wide mt-1">In Development</div>
+          </div>
+          <div className="bg-secondary-700/70 border border-warning-800/30 rounded-xl p-4 text-center">
+            <div className="text-3xl font-bold text-warning-300">{apps.filter(app => app.status === 'Planning').length}</div>
+            <div className="text-xs text-quaternary-400 uppercase tracking-wide mt-1">Planning</div>
+          </div>
+        </div>
 
-          {/* Filters */}
+
+        {/* Filters */}
+        <div className="flex items-center justify-between flex-wrap gap-3" style={{ animation: 'fadeInUp 0.6s ease-out 0.3s both' }}>
+          {/* Status filters */}
           <div className="flex flex-wrap gap-2">
-            {/* Category filters */}
-            {categories.map(cat => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 text-xs font-medium rounded-full transition ${
-                  selectedCategory === cat
-                    ? 'bg-tertiary-600 text-accent-50'
-                    : 'bg-secondary-700/70 text-quaternary-300 hover:text-accent-50 border border-tertiary-500/30'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-            
-            <div className="w-px bg-tertiary-500/30 mx-1" />
-            
-            {/* Status filters */}
             {statuses.map(status => (
               <button
                 key={status}
                 onClick={() => setSelectedStatus(status)}
-                className={`px-3 py-1.5 text-xs font-medium rounded-full transition ${
+                className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded-full transition ${
                   selectedStatus === status
                     ? 'bg-tertiary-600 text-accent-50'
                     : 'bg-secondary-700/70 text-quaternary-300 hover:text-accent-50 border border-tertiary-500/30'
@@ -535,19 +444,42 @@ const App = () => {
                 {status}
               </button>
             ))}
-            
-            {/* Toggle stats */}
+          </div>
+          
+          {/* View Mode Toggle */}
+          <div className="flex gap-2 bg-secondary-700/70 border border-tertiary-500/30 rounded-xl p-1.5">
             <button
-              onClick={() => setShowStats(!showStats)}
-              className="ml-auto px-3 py-1.5 text-xs font-medium rounded-full bg-secondary-700/70 text-quaternary-300 hover:text-accent-50 border border-tertiary-500/30 transition"
+              onClick={() => setViewMode('grid')}
+              className={`px-3 py-2 rounded-lg transition ${viewMode === 'grid' ? 'bg-tertiary-600 text-accent-50' : 'text-quaternary-400 hover:text-accent-50'}`}
+              title="Grid view"
             >
-              {showStats ? 'Hide Stats' : 'Show Stats'}
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+              </svg>
+            </button>
+            <button
+              onClick={() => setViewMode('list')}
+              className={`px-3 py-2 rounded-lg transition ${viewMode === 'list' ? 'bg-tertiary-600 text-accent-50' : 'text-quaternary-400 hover:text-accent-50'}`}
+              title="List view"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <button
+              onClick={() => setViewMode('compact')}
+              className={`px-3 py-2 rounded-lg transition ${viewMode === 'compact' ? 'bg-tertiary-600 text-accent-50' : 'text-quaternary-400 hover:text-accent-50'}`}
+              title="Compact view"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8h16M4 16h16" />
+              </svg>
             </button>
           </div>
         </div>
 
         {/* Featured Apps Section */}
-        {featuredApps.length > 0 && selectedCategory === 'All' && selectedStatus === 'All' && !searchQuery && (
+        {featuredApps.length > 0 && selectedStatus === 'All' && (
           <section style={{ animation: 'fadeInUp 0.6s ease-out 0.4s both' }}>
             <div className="flex items-center gap-3 mb-4">
               <h2 className="text-2xl font-bold text-accent-50">Featured Apps</h2>
@@ -559,7 +491,7 @@ const App = () => {
         )}
 
         {/* Recently Updated Section */}
-        {recentlyUpdatedApps.length > 0 && selectedCategory === 'All' && selectedStatus === 'All' && !searchQuery && (
+        {recentlyUpdatedApps.length > 0 && selectedStatus === 'All' && (
           <section style={{ animation: 'fadeInUp 0.6s ease-out 0.5s both' }}>
             <div className="flex items-center gap-3 mb-4">
               <h2 className="text-2xl font-bold text-accent-50">Recently Updated</h2>
@@ -574,7 +506,6 @@ const App = () => {
                   />
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-accent-50">{app.name}</h3>
-                    <p className="text-xs text-quaternary-400">{app.category}</p>
                   </div>
                   <div className="text-right">
                     <div className="text-sm text-accent-50">
@@ -606,7 +537,7 @@ const App = () => {
         >
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-accent-50">
-              {searchQuery || selectedCategory !== 'All' || selectedStatus !== 'All' ? 'Filtered Apps' : 'All Apps'}
+              {selectedStatus !== 'All' ? 'Filtered Apps' : 'All Apps'}
               <span className="text-quaternary-400 text-base ml-3">({filteredApps.length})</span>
             </h2>
           </div>
@@ -614,7 +545,7 @@ const App = () => {
           {filteredApps.length === 0 ? (
             <div className="text-center py-16 bg-secondary-700/70 border border-tertiary-500/30 rounded-2xl">
               <p className="text-xl text-quaternary-400 mb-2">No apps found</p>
-              <p className="text-sm text-quaternary-500">Try adjusting your search or filters</p>
+              <p className="text-sm text-quaternary-500">Try adjusting your filters</p>
             </div>
           ) : (
             <div className={
