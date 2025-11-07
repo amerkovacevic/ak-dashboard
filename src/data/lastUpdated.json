@@ -1,10 +1,10 @@
 {
-  "lastFetch": "2025-11-07T01:22:18.459Z",
+  "lastFetch": "2025-11-07T01:52:28.474Z",
   "commits": {
     "Personal Portfolio": {
-      "date": "2025-11-07T01:20:30Z",
-      "sha": "352cb1e",
-      "message": "fix: universal gitignore"
+      "date": "2025-11-07T01:22:27Z",
+      "sha": "1fa7614",
+      "message": "fix: universal gitignore again"
     },
     "Secret Santa": {
       "date": "2025-11-07T01:20:03Z",
@@ -12,9 +12,9 @@
       "message": "fix: universal gitignore"
     },
     "FM Team Draw": {
-      "date": "2025-11-07T01:20:35Z",
-      "sha": "1142a8b",
-      "message": "fix: universal gitignore"
+      "date": "2025-11-07T01:34:09Z",
+      "sha": "45ba8ef",
+      "message": "fix: remove glow effect"
     },
     "Pickup Soccer": {
       "date": "2025-11-07T01:20:17Z",
@@ -22,9 +22,9 @@
       "message": "fix: universal gitignore"
     },
     "Amer Gauntlet": {
-      "date": "2025-11-07T01:20:53Z",
-      "sha": "1d45835",
-      "message": "fix: universal gitignore"
+      "date": "2025-11-07T01:36:00Z",
+      "sha": "f580925",
+      "message": "fix: remove glow effect"
     },
     "Color Crafter": {
       "date": "2025-11-07T01:20:42Z",
