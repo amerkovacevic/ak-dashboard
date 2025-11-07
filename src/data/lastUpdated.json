@@ -1,10 +1,10 @@
 {
-  "lastFetch": "2025-11-07T01:20:17.630Z",
+  "lastFetch": "2025-11-07T01:22:18.459Z",
   "commits": {
     "Personal Portfolio": {
-      "date": "2025-11-02T22:57:59Z",
-      "sha": "ae71257",
-      "message": "validation of font family"
+      "date": "2025-11-07T01:20:30Z",
+      "sha": "352cb1e",
+      "message": "fix: universal gitignore"
     },
     "Secret Santa": {
       "date": "2025-11-07T01:20:03Z",
@@ -12,34 +12,34 @@
       "message": "fix: universal gitignore"
     },
     "FM Team Draw": {
-      "date": "2025-11-02T22:58:05Z",
-      "sha": "923130f",
-      "message": "validation of font family"
+      "date": "2025-11-07T01:20:35Z",
+      "sha": "1142a8b",
+      "message": "fix: universal gitignore"
     },
     "Pickup Soccer": {
-      "date": "2025-11-02T22:57:47Z",
-      "sha": "fb6ae13",
-      "message": "validation of font family"
+      "date": "2025-11-07T01:20:17Z",
+      "sha": "a4cb96a",
+      "message": "fix: universal gitignore"
     },
     "Amer Gauntlet": {
-      "date": "2025-11-05T04:08:11Z",
-      "sha": "b3e04dc",
-      "message": "FIXED"
+      "date": "2025-11-07T01:20:53Z",
+      "sha": "1d45835",
+      "message": "fix: universal gitignore"
     },
     "Color Crafter": {
-      "date": "2025-11-07T01:06:57Z",
-      "sha": "3d05211",
-      "message": "fix: changed readme"
+      "date": "2025-11-07T01:20:42Z",
+      "sha": "50e4e48",
+      "message": "fix: universal gitignore"
     },
     "Encryption Suite": {
-      "date": "2025-11-07T01:04:32Z",
-      "sha": "81ea0b9",
-      "message": "fix: removed md files"
+      "date": "2025-11-07T01:21:08Z",
+      "sha": "c7e6166",
+      "message": "fix: universal gitignore"
     },
     "Time Bro": {
-      "date": "2025-11-07T01:05:55Z",
-      "sha": "899f36d",
-      "message": "fix: changed readme"
+      "date": "2025-11-07T01:21:02Z",
+      "sha": "7b91bdc",
+      "message": "fix: universal gitignore"
     },
     "Flick Feed": {
       "date": "2025-11-06T22:55:48Z",
