@@ -9,9 +9,7 @@ const appsData = [
     href: 'https://about.amerkovacevic.com',
     status: 'Live',
     category: 'Portfolio',
-    tags: ['personal', 'about', 'portfolio'],
     color: '#14b8a6', // teal
-    featured: true,
     githubRepo: 'amerkovacevic/personal-portfolio',
   },
   {
@@ -21,9 +19,7 @@ const appsData = [
     href: 'https://santa.amerkovacevic.com',
     status: 'Live',
     category: 'Social',
-    tags: ['gifts', 'holidays', 'social'],
     color: '#ef4444', // red
-    featured: false,
     githubRepo: 'amerkovacevic/secret-santa',
   },
   {
@@ -33,9 +29,7 @@ const appsData = [
     href: 'https://fm.amerkovacevic.com',
     status: 'Live',
     category: 'Gaming',
-    tags: ['football', 'gaming', 'randomizer'],
     color: '#8b5cf6', // purple
-    featured: false,
     githubRepo: 'amerkovacevic/fm-team-draw',
   },
   {
@@ -45,9 +39,7 @@ const appsData = [
     href: 'https://soccer.amerkovacevic.com',
     status: 'Live',
     category: 'Sports',
-    tags: ['soccer', 'sports', 'organization'],
     color: '#22c55e', // green
-    featured: true,
     githubRepo: 'amerkovacevic/pickup-soccer',
   },
   {
@@ -57,9 +49,7 @@ const appsData = [
     href: 'https://gauntlet.amerkovacevic.com',
     status: 'Live',
     category: 'Gaming',
-    tags: ['games', 'challenges', 'daily'],
     color: '#f59e0b', // amber
-    featured: true,
     githubRepo: 'amerkovacevic/amer-gauntlet',
   },
   {
@@ -69,9 +59,7 @@ const appsData = [
     href: 'https://color.amerkovacevic.com/?colors=0D1B2A-1B263B-415A77-778DA9-E0E1DD&info=hsl',
     status: 'Live',
     category: 'Design Tool',
-    tags: ['colors', 'design', 'palettes'],
     color: '#ec4899', // pink
-    featured: false,
     githubRepo: 'amerkovacevic/color-crafter',
   },
   {
@@ -81,9 +69,7 @@ const appsData = [
     href: 'https://crypt.amerkovacevic.com',
     status: 'Live',
     category: 'Security Tool',
-    tags: ['encryption', 'security', 'cryptography'],
     color: '#3b82f6', // blue
-    featured: true,
     githubRepo: 'amerkovacevic/encryption',
   },
   {
@@ -93,9 +79,7 @@ const appsData = [
     href: 'https://time.amerkovacevic.com',
     status: 'Live',
     category: 'Productivity',
-    tags: ['time', 'timezone', 'productivity'],
     color: '#06b6d4', // cyan
-    featured: false,
     githubRepo: 'amerkovacevic/time-buddy',
   },
   {
@@ -105,12 +89,35 @@ const appsData = [
     href: 'https://flick.amerkovacevic.com',
     status: 'Live',
     category: 'Social',
-    tags: ['movies', 'social', 'entertainment'],
     color: '#a855f7', // purple
-    featured: true,
     githubRepo: 'amerkovacevic/flickfeed',
   },
+  {
+    id: 10,
+    name: 'Diff Bro',
+    description: 'A diff checker for pasted text. Compare two text blocks side-by-side and see exactly what changed.',
+    href: '#',
+    status: 'Planning',
+    category: 'Developer Tool',
+    color: '#10b981', // emerald
+    githubRepo: 'amerkovacevic/diff-bro',
+    disabled: true,
+  },
+  {
+    id: 11,
+    name: 'Fullporter',
+    description: 'A paper trading app to practice stock market strategies without risking real money. Track your portfolio and test your skills.',
+    href: '#',
+    status: 'Planning',
+    category: 'Finance',
+    color: '#eab308', // yellow
+    githubRepo: 'amerkovacevic/fullporter',
+    disabled: true,
+  },
 ]
+
+// Featured apps - hardcoded to these 3 specific apps
+const featuredAppNames = ['Personal Portfolio', 'Flick Feed', 'Amer Gauntlet']
 
 // Merge GitHub commit data with app data
 const appsWithCommitData = appsData.map(app => {
@@ -132,7 +139,7 @@ const statusStyles = {
   'Coming soon': 'text-quaternary-300 bg-secondary-700/60 border-tertiary-800/60',
 }
 
-const categories = ['All', 'Portfolio', 'Social', 'Gaming', 'Sports', 'Design Tool', 'Security Tool', 'Productivity']
+const categories = ['All', 'Portfolio', 'Social', 'Gaming', 'Sports', 'Design Tool', 'Security Tool', 'Productivity', 'Developer Tool', 'Finance']
 const statuses = ['All', 'Live', 'In development', 'In design', 'Planning']
 
 const App = () => {
@@ -142,23 +149,9 @@ const App = () => {
   const [selectedStatus, setSelectedStatus] = useState('All')
   const [viewMode, setViewMode] = useState('grid') // grid, list, compact
   const [showStats, setShowStats] = useState(true)
-  const [showAdmin, setShowAdmin] = useState(false)
   const [touchStart, setTouchStart] = useState(null)
   const [touchEnd, setTouchEnd] = useState(null)
   const cardsRef = useRef([])
-  
-  // Check for admin access via URL parameter
-  // Access admin by adding ?admin=akdash2025 to URL
-  const [isAdminMode, setIsAdminMode] = useState(false)
-  
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search)
-    const adminKey = urlParams.get('admin')
-    // Change 'akdash2025' to your preferred secret keyword
-    if (adminKey === 'akdash2025') {
-      setIsAdminMode(true)
-    }
-  }, [])
 
   // Load preferences from localStorage
   useEffect(() => {
@@ -182,16 +175,15 @@ const App = () => {
   // Filter apps
   const filteredApps = apps.filter(app => {
     const matchesSearch = app.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         app.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         app.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+                         app.description.toLowerCase().includes(searchQuery.toLowerCase())
     const matchesCategory = selectedCategory === 'All' || app.category === selectedCategory
     const matchesStatus = selectedStatus === 'All' || app.status === selectedStatus
     
     return matchesSearch && matchesCategory && matchesStatus
   })
 
-  // Get featured apps
-  const featuredApps = apps.filter(app => app.featured).slice(0, 3)
+  // Get featured apps - hardcoded specific apps
+  const featuredApps = apps.filter(app => featuredAppNames.includes(app.name))
 
   // Get recently updated apps
   const recentlyUpdatedApps = [...apps]
@@ -203,7 +195,6 @@ const App = () => {
     total: apps.length,
     live: apps.filter(app => app.status === 'Live').length,
     inDev: apps.filter(app => app.status === 'In development').length,
-    featured: apps.filter(app => app.featured).length,
   }
 
   // Swipe handling for mobile
@@ -235,18 +226,6 @@ const App = () => {
     }
   }
 
-  // Admin functions
-  const toggleFeatured = (id) => {
-    setApps(apps.map(app => 
-      app.id === id ? { ...app, featured: !app.featured } : app
-    ))
-  }
-
-  const updateAppStatus = (id, newStatus) => {
-    setApps(apps.map(app => 
-      app.id === id ? { ...app, status: newStatus } : app
-    ))
-  }
 
   // Render app card
   const renderAppCard = (app, index) => {
@@ -286,9 +265,6 @@ const App = () => {
                   <span className="inline-block h-2 w-2 rounded-full bg-current" aria-hidden />
                   {app.status}
                 </div>
-                {app.featured && (
-                  <span className="text-yellow-400 text-lg" title="Featured">⭐</span>
-                )}
                 {isNew && (
                   <span className="inline-flex items-center gap-1 rounded-full bg-tertiary-500/20 px-2 py-1 text-xs font-semibold text-tertiary-300">
                     NEW
@@ -300,13 +276,6 @@ const App = () => {
                 <h2 className="text-2xl font-semibold text-accent-50">{app.name}</h2>
                 <p className="text-xs text-tertiary-400 uppercase tracking-wide">{app.category}</p>
                 <p className="text-sm text-quaternary-300">{app.description}</p>
-                <div className="flex flex-wrap gap-1.5 mt-2">
-                  {app.tags.slice(0, 3).map(tag => (
-                    <span key={tag} className="text-xs bg-tertiary-900/50 text-tertiary-300 px-2 py-0.5 rounded">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
             <div className="flex items-center justify-between">
@@ -329,7 +298,7 @@ const App = () => {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.25 6.75v10.5m0 0h-10.5m10.5 0-12-12" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 )}
               </span>
@@ -342,7 +311,6 @@ const App = () => {
             <div className="flex-1 space-y-2">
               <div className="flex items-center gap-3">
                 <h2 className="text-xl font-semibold text-accent-50">{app.name}</h2>
-                {app.featured && <span className="text-yellow-400" title="Featured">⭐</span>}
                 {isNew && (
                   <span className="inline-flex items-center gap-1 rounded-full bg-tertiary-500/20 px-2 py-1 text-xs font-semibold text-tertiary-300">
                     NEW
@@ -351,13 +319,6 @@ const App = () => {
               </div>
               <p className="text-xs text-tertiary-400 uppercase tracking-wide">{app.category}</p>
               <p className="text-sm text-quaternary-300">{app.description}</p>
-              <div className="flex flex-wrap gap-1.5">
-                {app.tags.slice(0, 4).map(tag => (
-                  <span key={tag} className="text-xs bg-tertiary-900/50 text-tertiary-300 px-2 py-0.5 rounded">
-                    #{tag}
-                  </span>
-                ))}
-              </div>
             </div>
             <div className="flex flex-col items-end gap-3">
               <div className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide ${statusClass}`}>
@@ -377,7 +338,7 @@ const App = () => {
                 {isDisabled ? 'Coming Soon' : 'Open'}
                 {!isDisabled && (
                   <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.25 6.75v10.5m0 0h-10.5m10.5 0-12-12" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 )}
               </span>
@@ -390,7 +351,6 @@ const App = () => {
             <div className="flex-1 flex items-center gap-4">
               <h3 className="text-lg font-semibold text-accent-50 flex items-center gap-2">
                 {app.name}
-                {app.featured && <span className="text-yellow-400 text-sm">⭐</span>}
                 {isNew && (
                   <span className="inline-flex items-center rounded-full bg-tertiary-500/20 px-2 py-0.5 text-xs font-semibold text-tertiary-300">
                     NEW
@@ -414,7 +374,7 @@ const App = () => {
                 {isDisabled ? 'Soon' : 'Open'}
                 {!isDisabled && (
                   <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.25 6.75v10.5m0 0h-10.5m10.5 0-12-12" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 )}
               </span>
@@ -465,24 +425,11 @@ const App = () => {
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col gap-8 px-4 py-8 md:gap-12 md:px-8 lg:px-12 md:py-12">
         {/* Header */}
         <header className="flex flex-col gap-6 text-center md:text-left" style={{ animation: 'fadeIn 0.8s ease-out' }}>
-          <div className="flex items-center justify-between flex-wrap gap-4">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.4em] text-quaternary-400">AK Dashboard</p>
-              <h1 className="text-3xl font-bold text-accent-50 sm:text-4xl lg:text-5xl mt-2">
-                Experiments and everyday tools
-              </h1>
-            </div>
-            
-            {/* Admin toggle - only visible when isAdminMode is true */}
-            {isAdminMode && (
-              <button
-                onClick={() => setShowAdmin(!showAdmin)}
-                className="text-xs px-3 py-1.5 rounded-full bg-secondary-700/70 text-quaternary-400 hover:text-accent-50 transition"
-                title="Toggle admin panel"
-              >
-                ⚙️ Admin
-              </button>
-            )}
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-quaternary-400">AK Dashboard</p>
+            <h1 className="text-3xl font-bold text-accent-50 sm:text-4xl lg:text-5xl mt-2">
+              Experiments and everyday tools
+            </h1>
           </div>
           
           <p className="mx-auto max-w-3xl text-base sm:text-lg text-quaternary-300 md:mx-0">
@@ -492,7 +439,7 @@ const App = () => {
 
         {/* Statistics Dashboard */}
         {showStats && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4" style={{ animation: 'fadeInUp 0.6s ease-out 0.2s both' }}>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4" style={{ animation: 'fadeInUp 0.6s ease-out 0.2s both' }}>
             <div className="bg-secondary-700/70 border border-tertiary-500/30 rounded-xl p-4 text-center">
               <div className="text-3xl font-bold text-accent-50">{stats.total}</div>
               <div className="text-xs text-quaternary-400 uppercase tracking-wide mt-1">Total Apps</div>
@@ -505,48 +452,9 @@ const App = () => {
               <div className="text-3xl font-bold text-tertiary-300">{stats.inDev}</div>
               <div className="text-xs text-quaternary-400 uppercase tracking-wide mt-1">In Development</div>
             </div>
-            <div className="bg-secondary-700/70 border border-warning-800/30 rounded-xl p-4 text-center">
-              <div className="text-3xl font-bold text-yellow-400">{stats.featured}</div>
-              <div className="text-xs text-quaternary-400 uppercase tracking-wide mt-1">Featured ⭐</div>
-            </div>
           </div>
         )}
 
-        {/* Admin Panel - only visible in admin mode */}
-        {isAdminMode && showAdmin && (
-          <div className="bg-secondary-700/70 border border-tertiary-500/30 rounded-xl p-6" style={{ animation: 'fadeInUp 0.4s ease-out' }}>
-            <h3 className="text-xl font-semibold text-accent-50 mb-4">Admin Panel</h3>
-            <div className="space-y-3">
-              {apps.map(app => (
-                <div key={app.id} className="flex items-center justify-between bg-primary-800/50 rounded-lg p-3">
-                  <div className="flex-1">
-                    <span className="text-sm font-semibold text-accent-50">{app.name}</span>
-                    <span className="text-xs text-quaternary-400 ml-3">{app.status}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <button
-                      onClick={() => toggleFeatured(app.id)}
-                      className={`text-lg transition ${app.featured ? 'text-yellow-400' : 'text-quaternary-600 hover:text-yellow-400'}`}
-                      title="Toggle featured"
-                    >
-                      {app.featured ? '⭐' : '☆'}
-                    </button>
-                    <select
-                      value={app.status}
-                      onChange={(e) => updateAppStatus(app.id, e.target.value)}
-                      className="text-xs bg-secondary-600 text-accent-50 rounded px-2 py-1 border border-tertiary-600"
-                    >
-                      <option value="Live">Live</option>
-                      <option value="In development">In Development</option>
-                      <option value="In design">In Design</option>
-                      <option value="Planning">Planning</option>
-                    </select>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* Search and Filters */}
         <div className="flex flex-col gap-4" style={{ animation: 'fadeInUp 0.6s ease-out 0.3s both' }}>
@@ -643,7 +551,6 @@ const App = () => {
           <section style={{ animation: 'fadeInUp 0.6s ease-out 0.4s both' }}>
             <div className="flex items-center gap-3 mb-4">
               <h2 className="text-2xl font-bold text-accent-50">Featured Apps</h2>
-              <span className="text-yellow-400 text-xl">⭐</span>
             </div>
             <div className="grid gap-6 md:grid-cols-3">
               {featuredApps.map((app, index) => renderAppCard(app, index))}
@@ -666,10 +573,7 @@ const App = () => {
                     style={{ backgroundColor: app.color }}
                   />
                   <div className="flex-1">
-                    <div className="flex items-center gap-2">
-                      <h3 className="text-lg font-semibold text-accent-50">{app.name}</h3>
-                      {app.featured && <span className="text-yellow-400 text-sm">⭐</span>}
-                    </div>
+                    <h3 className="text-lg font-semibold text-accent-50">{app.name}</h3>
                     <p className="text-xs text-quaternary-400">{app.category}</p>
                   </div>
                   <div className="text-right">
