@@ -87,11 +87,10 @@ const appsData = [
     id: 10,
     name: 'Diff Bro',
     description: 'A diff checker for pasted text. Compare two text blocks side-by-side and see exactly what changed.',
-    href: '#',
-    status: 'Planning',
+    href: 'https://diff.amerkovacevic.com',
+    status: 'Live',
     color: '#10b981', // emerald
     githubRepo: 'amerkovacevic/diff-bro',
-    disabled: true,
   },
   {
     id: 11,
