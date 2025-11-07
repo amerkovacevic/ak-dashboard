@@ -1,5 +1,5 @@
 {
-  "lastFetch": "2025-11-07T12:43:54.805Z",
+  "lastFetch": "2025-11-07T18:30:37.842Z",
   "commits": {
     "Personal Portfolio": {
       "date": "2025-11-07T01:22:27Z",
@@ -42,9 +42,9 @@
       "message": "fix: universal gitignore"
     },
     "Flick Feed": {
-      "date": "2025-11-07T03:58:48Z",
-      "sha": "001d2b5",
-      "message": "feat: discover page, diary page, and way better lists"
+      "date": "2025-11-07T18:14:48Z",
+      "sha": "567304b",
+      "message": "fix: half stars on ios PWA"
     },
     "Diff Bro": {
       "date": "2025-11-07T02:05:17Z",
