@@ -1,5 +1,5 @@
 {
-  "lastFetch": "2025-11-09T01:48:10.337Z",
+  "lastFetch": "2025-11-09T06:30:16.116Z",
   "commits": {
     "Personal Portfolio": {
       "date": "2025-11-07T01:22:27Z",
@@ -42,9 +42,9 @@
       "message": "fix: universal gitignore"
     },
     "Flick Feed": {
-      "date": "2025-11-09T01:36:35Z",
-      "sha": "8e241ea",
-      "message": "fix: watch date reverting to todays when importing a review that was not written on the watched date"
+      "date": "2025-11-09T06:22:41Z",
+      "sha": "cfa3b39",
+      "message": "fix: importing rewatches"
     },
     "Diff Bro": {
       "date": "2025-11-07T02:05:17Z",
