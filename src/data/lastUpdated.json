@@ -1,20 +1,20 @@
 {
-  "lastFetch": "2025-11-18T18:33:24.434Z",
+  "lastFetch": "2025-11-19T00:08:52.282Z",
   "commits": {
     "Personal Portfolio": {
-      "date": "2025-11-18T04:08:14Z",
-      "sha": "3b31ef8",
-      "message": "feat: new portfolio with nextjs"
+      "date": "2025-11-19T00:07:18Z",
+      "sha": "0f9ac33",
+      "message": "Delete"
     },
     "Secret Santa": {
-      "date": "2025-11-07T01:20:03Z",
-      "sha": "3b42f33",
-      "message": "fix: universal gitignore"
+      "date": "2025-11-19T00:05:24Z",
+      "sha": "9a4306e",
+      "message": "housekeeping"
     },
     "FM Team Draw": {
-      "date": "2025-11-07T01:34:09Z",
-      "sha": "45ba8ef",
-      "message": "fix: remove glow effect"
+      "date": "2025-11-19T00:06:17Z",
+      "sha": "6b91831",
+      "message": "housekeeping"
     },
     "Pickup Soccer": {
       "date": "2025-11-07T01:20:17Z",
@@ -42,22 +42,14 @@
       "message": "fix: universal gitignore"
     },
     "Flick Feed": {
-      "date": "2025-11-18T18:33:23.797Z",
+      "date": "2025-11-19T00:08:51.779Z",
       "sha": "unknown",
       "message": "No commit data available"
     },
     "Diff Bro": {
-      "date": "2025-11-07T02:05:17Z",
-      "sha": "dc1d943",
-      "message": "feat: initial commit, basically done besides import files but no need for me"
-<<<<<<< HEAD
-=======
-    },
-    "Fullporter": {
-      "date": "2025-11-18T18:33:24.333Z",
-      "sha": "unknown",
-      "message": "No commit data available"
->>>>>>> d8bc82b203fe7524552ccde74f65e503bd55e6d6
+      "date": "2025-11-19T00:06:50Z",
+      "sha": "7c08831",
+      "message": "housekeeping"
     }
   }
 }
