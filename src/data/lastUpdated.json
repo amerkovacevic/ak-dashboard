@@ -1,10 +1,10 @@
 {
-  "lastFetch": "2025-11-18T01:45:14.735Z",
+  "lastFetch": "2025-11-18T18:33:24.434Z",
   "commits": {
     "Personal Portfolio": {
-      "date": "2025-11-07T01:22:27Z",
-      "sha": "1fa7614",
-      "message": "fix: universal gitignore again"
+      "date": "2025-11-18T04:08:14Z",
+      "sha": "3b31ef8",
+      "message": "feat: new portfolio with nextjs"
     },
     "Secret Santa": {
       "date": "2025-11-07T01:20:03Z",
@@ -42,7 +42,7 @@
       "message": "fix: universal gitignore"
     },
     "Flick Feed": {
-      "date": "2025-11-18T01:45:13.992Z",
+      "date": "2025-11-18T18:33:23.797Z",
       "sha": "unknown",
       "message": "No commit data available"
     },
@@ -50,6 +50,14 @@
       "date": "2025-11-07T02:05:17Z",
       "sha": "dc1d943",
       "message": "feat: initial commit, basically done besides import files but no need for me"
+<<<<<<< HEAD
+=======
+    },
+    "Fullporter": {
+      "date": "2025-11-18T18:33:24.333Z",
+      "sha": "unknown",
+      "message": "No commit data available"
+>>>>>>> d8bc82b203fe7524552ccde74f65e503bd55e6d6
     }
   }
 }
