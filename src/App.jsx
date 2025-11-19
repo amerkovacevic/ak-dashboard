@@ -92,15 +92,6 @@ const appsData = [
     color: '#10b981', // emerald
     githubRepo: 'amerkovacevic/diff-bro',
   },
-  {
-    id: 11,
-    name: 'Fullporter',
-    description: 'A paper trading app to practice stock market strategies without risking real money. Track your portfolio and test your skills.',
-    href: 'https://trade.amerkovacevic.com',
-    status: 'In development',
-    color: '#eab308', // yellow
-    githubRepo: 'amerkovacevic/fullporter',
-  },
 ]
 
 // Featured apps - hardcoded to these 3 specific apps

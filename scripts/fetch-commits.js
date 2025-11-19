@@ -18,7 +18,6 @@ const repos = [
   { name: 'Time Bro', repo: 'amerkovacevic/time-buddy' },
   { name: 'Flick Feed', repo: 'amerkovacevic/flickfeed' },
   { name: 'Diff Bro', repo: 'amerkovacevic/diff-bro' },
-  { name: 'Fullporter', repo: 'amerkovacevic/fullporter' },
 ];
 
 async function fetchLatestCommit(repo, token) {
