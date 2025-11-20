@@ -1,5 +1,5 @@
 {
-  "lastFetch": "2025-11-20T03:45:48.075Z",
+  "lastFetch": "2025-11-20T06:32:46.581Z",
   "commits": {
     "Personal Portfolio": {
       "date": "2025-11-20T02:36:14Z",
@@ -12,9 +12,9 @@
       "message": "feat: new styling"
     },
     "FM Team Draw": {
-      "date": "2025-11-20T02:13:33Z",
-      "sha": "eb0a1de",
-      "message": "feat: new styling"
+      "date": "2025-11-20T03:51:40Z",
+      "sha": "b837730",
+      "message": "Delete .firebase directory"
     },
     "Pickup Soccer": {
       "date": "2025-11-20T02:19:01Z",
@@ -22,9 +22,9 @@
       "message": "feat: new styling"
     },
     "Amer Gauntlet": {
-      "date": "2025-11-20T01:59:13Z",
-      "sha": "c9b9e9a",
-      "message": "feat: new styling"
+      "date": "2025-11-20T03:47:43Z",
+      "sha": "0775121",
+      "message": "Delete .firebase directory"
     },
     "Color Crafter": {
       "date": "2025-11-20T02:04:29Z",
@@ -42,7 +42,7 @@
       "message": "Delete node_modules directory"
     },
     "Flick Feed": {
-      "date": "2025-11-20T03:45:47.747Z",
+      "date": "2025-11-20T06:32:46.243Z",
       "sha": "unknown",
       "message": "No commit data available"
     },
